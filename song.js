@@ -20,7 +20,7 @@ $(function(){
 		})
 	})
 	   let audio=document.createElement('audio')
-	    audio.src="http://dl.stream.qqmusic.qq.com/C400003vUjJp3QwFcd.m4a?vkey=F95845FA079A0CA69CAF8A9404D6387AAE9E62E1FE1B1B7C53A55325A8CF42D87572E7B93CE843362001D331A1145A6931AFE3F238927E6A&guid=2240664479&uin=0&fromtag=66"
+	    audio.src="http://p29vmquu8.bkt.clouddn.com/NetEaseMusic.mp4"
 	    audio.oncanplay=function(){
 	    	audio.play()
 	    	$('.disc-container').addClass('playing')
