@@ -1,4 +1,27 @@
 $(function(){
+
+       let id=parseInt(location.search.match(/\bid=([^&]*)/)[1],10)
+       $.get('./song.json').then(function(response){
+       	let songs=response
+       	let song=songs.filter(s=>s.id === id)[0]
+       	let {url}=song
+       	let audio=document.createElement('audio')
+	    audio.src=url
+	    audio.oncanplay=function(){
+	    	audio.play()
+	    	$('.disc-container').addClass('playing')
+	    }
+        $('.icon-pause').on('click',function(){
+        	audio.pause()
+        	$('.disc-container').removeClass('playing')
+        })
+        $('.icon-play').on('click',function(){
+        	audio.play()
+        	$('.disc-container').addClass('playing')
+        })
+
+       })
+
 	$.get('/lyric.json').then(function(object){
 		let {lyric}=object
 		let array=lyric.split('\n')
@@ -19,20 +42,7 @@ $(function(){
 			$p.appendTo($lyric.children('.lines'))
 		})
 	})
-	   let audio=document.createElement('audio')
-	    audio.src="http://p29vmquu8.bkt.clouddn.com/NetEaseMusic.mp4"
-	    audio.oncanplay=function(){
-	    	audio.play()
-	    	$('.disc-container').addClass('playing')
-	    }
-        $('.icon-pause').on('click',function(){
-        	audio.pause()
-        	$('.disc-container').removeClass('playing')
-        })
-        $('.icon-play').on('click',function(){
-        	audio.play()
-        	$('.disc-container').addClass('playing')
-        })
+	  
 
 
 
