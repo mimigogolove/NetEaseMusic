@@ -32,7 +32,38 @@ $(function(){
         	audio.play()
         	$('.disc-container').addClass('playing')
         })
+        setInterval(()=> {
+        	return
+        	let seconds = audio.currentTime
+        	let minutes = ~~(seconds / 60)
+        	let left = seconds-minutes*60
+        	let time = `${pad(minutes)}:${pad(left)}`
+        	let $lines = $('.lines> p')
+        	let $whichLine
+        	for(let i=0; i<$lines.length; i++){
+        		let currentLineTime = $lines.eq(i).attr('data-time')
+        		let nextLineTime = $lines.eq(i+1).attr('data-time')
+        		if( $lines.eq(i+1).length !== undefined && currentLineTime < time && nextLineTime > time{
+                   $whichLine = $lines.eq(i)
+                   break
+        		}
+        	}
 
+        	if($whichLine){
+        		$whichLine.addClass('active').prev().removeClass('active')
+        		let top = $whichLine.offset().top
+        		let linestop = $('.lines').offset().top
+                let delta = top - linesTop - $('.lyric').height()/3
+                $('.lines').css('transform',`translateY(-${delta}px)`)
+
+        	}
+        },300)
+        
+
+        }
+
+        function pad(number){
+        	return number>=10 ? number + '' : '0' + number
         }
 	
 	   
