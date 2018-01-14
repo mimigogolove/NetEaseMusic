@@ -76,6 +76,14 @@ section>h2:first-child{
     left: -2vw;
     right: -2vw;
 }
+.tabContent > li{
+	display: none;
+}
+.tabContent > li.active{
+	display: block;
+}
+
+
 .playlists{
 	margin-top: 5.5vw;
 }
