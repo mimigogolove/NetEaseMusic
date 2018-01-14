@@ -4,8 +4,21 @@ $(function(){
        $.get('./song.json').then(function(response){
        	let songs=response
        	let song=songs.filter(s=>s.id === id)[0]
-       	let {url}=song
-       	let audio=document.createElement('audio')
+       	let {url, name, lyric}=song
+       	initPlayer.call(undefined, url)
+       	initText(name, lyric)
+       	
+
+       	 })
+
+        function initText(name, lyric){
+        $('.song-description > h1').text(name)
+        parseLyric(lyric)
+        
+        }
+       	
+        function initPlayer(url){
+        let audio=document.createElement('audio')
 	    audio.src=url
 	    audio.oncanplay=function(){
 	    	audio.play()
@@ -20,11 +33,12 @@ $(function(){
         	$('.disc-container').addClass('playing')
         })
 
-       })
+        }
+	
+	   
 
-	$.get('/lyric.json').then(function(object){
-		let {lyric}=object
-		let array=lyric.split('\n')
+	   function parseLyric(lyric){
+	   	et array=lyric.split('\n')
 		let regex=/^\[(.*)\](.*)$/
 		array=array.map(function(string,index){
 			let matches = string.match(regex)
@@ -40,9 +54,9 @@ $(function(){
 			let $p=$('<p/>')
 			$p.attr('data-time',object.time).text(object.words)
 			$p.appendTo($lyric.children('.lines'))
-		})
-	})
-	  
+			})
+
+	   }
 
 
 
