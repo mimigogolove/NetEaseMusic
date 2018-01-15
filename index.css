@@ -10,6 +10,17 @@ html{
 body{
 	font-size: 3.7vw;
 }
+
+
+.head-fixed{ /*tab固定*/
+  position: fixed;
+  top: 0;
+  left:0;
+  width: 100%;
+  background: #fff;
+  z-index: 1; //3
+}
+
 section>h2:first-child{
 	font-size: 4.53vw; 
 	border-left: 2px solid #D33A31; 
@@ -20,10 +31,10 @@ section>h2:first-child{
 }
 .topbar{
 	background: #D43C33;
-	padding: 4.5vw 2.5vw;
+	padding: 5.6vw 2.5vw;
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
+	justify-content: space-between;  /*布局到两边*/
 }
 
 .topbar .logo{
@@ -31,16 +42,29 @@ section>h2:first-child{
 }
 
 .topbar .downloadApp{
-	line-height: 5vw;
+	line-height: 7.5vw;
 	border: 1px solid white;
-	border-radius: 3.5vw;
-	display: block;
+	border-radius: 4.25vw;
+	//display: block; /* */
 	color: white;
 	text-decoration: none;
-	padding: 0.3em;
-
-
+	padding: 0 0.5em;
 }
+.tab-content{ 
+  padding-top: 31.5vw;  
+}
+/*.topbar .downloadApp::after{
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	border: 1px solid white;
+	border-radius: 13.3vw;
+	transform: scale(0.5);
+	transform-origin: 0 0;
+}*/
 
 .siteNav{}
 
@@ -50,60 +74,51 @@ section>h2:first-child{
 	border-bottom: 1px solid #cccccc;
 	font-size: 1.1em;
 }
-
 .siteNav>ol>li{
 	flex: 1;
 }
-
 .siteNav>ol>li.active{
 	color: #D33A31;
-
-	
 }
 .siteNav>ol>li>span{
-	height: 10vw;
-	line-height: 11vw;
+	//height: 10vw;
+	line-height: 12vw;
 	display: inline-block;
 	position: relative;
-	
-
 }
 .siteNav>ol>li.active>span::before{
 	content: '';
 	position: absolute;
-	bottom: 0;
-	border-top: 2px solid #D33A31;
+	bottom: 0;  
+	border-bottom: 2px solid #D33A31;
     left: -2vw;
     right: -2vw;
 }
-.tabContent > li{
+.tab-content > li{
 	display: none;
 }
-.tabContent > li.active{
-	display: block;
+.tab-content > li.active{
+	display: block;  /*tab隐藏显示切换*/
 }
 
-
-.playlists{
+/*推荐歌单*/
+/*.playLists{
 	margin-top: 5.5vw;
-}
-.playlists>ul{
+}*/
+.playLists>ul{
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
 	font-size: 0.93em;
-
 }
-.playlists>ul img{
+.playLists>ul img{
     width: 100%;
-    
 }
-.playlists>ul>li{
+.playLists>ul>li{
 	width: calc(33.333333% - 1vw);
 	margin-bottom: 4vw;
-
 }
-.playlists>ul>li p{
+.playLists>ul>li p{
 	padding: 0 1vw;
 	display: -webkit-box;
 	line-height: 4vw;
@@ -112,12 +127,30 @@ section>h2:first-child{
 	-webkit-box-orient: vertical;
 	overflow: hidden;
 	text-overflow: ellipsis;
+}
+
+/*tab2-热歌*/
+.hot-img{}
 
 
+
+/*最新音乐*/
+.lastestMusic{}
+
+.tab-music2 .tab2-loading,
+.lastestMusic .loading{
+ text-align: center;
+}
+.tab-music2 ol#music-hot,
+.lastestMusic>ol{
+  padding-left: calc(2.6vw + 2px);
+}
+.tab-music2 ol#music-hot>li{
+  padding:1vw 0;
+  position: relative;
 }
 
 
-.lastestMusic{}
 .lastestMusic > p{
 	text-align: center;
 }
@@ -160,7 +193,7 @@ section>h2:first-child{
 }
 
 
-
+/*footer*/
 section.art{
 	background: transparent url(http://s3.music.126.net/m/s/img/recommand_bg_2x.png?d045fafc60e017b653f8065a87496922) no-repeat center 0;
     padding-top: 17.6vw;
@@ -199,6 +232,9 @@ section.art .copyright{
 	color: #888;
 
 }
+
+/*搜索*/
+input{}
 
 
 

@@ -24,7 +24,7 @@ $(function(){
 	})
 
 
-
+/*    //tab
 	$('.siteNav').on('click', 'ol.tabItems>li',function(e){
 		let $li = $(e.currentTarget).addClass('active')
 		$li.siblings().removeClass('active')
@@ -55,7 +55,7 @@ $(function(){
      		})
 
      	}
-     })
+     })  */
 
 
 let timer = undefined
