@@ -1,5 +1,5 @@
 $(function(){
-	$.get('./songs.json').then(function(response){
+	/* $.get('./songs.json').then(function(response){
 		let items=response
 		items.forEach((i)=>{
 			let $li=$(`
@@ -20,42 +20,90 @@ $(function(){
 
 		 $('#lastestMusicloading').remove()
 	},function(){
-		
-	})
+		*/
+	//})
+
+//leancloud数据初始化
+var APP_ID = 'CApR3Yej9PHsOicPI3vhH7Fc-gzGzoHsz';
+        var APP_KEY = 'ToqKlYglDwoTtrvEmGDRzkqz';
+
+         AV.init({
+         appId: APP_ID,
+         appKey: APP_KEY
+           }); 
+
+ // 最新音乐 无序列表
+  var lastestMusic = new AV.Query('Song');//数据库
+            lastestMusic.find().then(function(results){//获取所有数据 数据库api
+            for(var i=0; i<results.length; i++){
+            let lastestSong = results[i].attributes
+            let $li = $(`
+             <li>
+              <a class="play-circled" href="./song.html?id=${results[i].id}">
+              <h3>${lastestSong.name}</h3>
+              <p>
+                <svg class="sq">
+                  <use xlink:href="#icon-sq"></use>
+                </svg>
+                ${lastestSong.singer}</p>
+                <svg>
+                  <use xlink:href="#icon-play-circled"></use>
+                </svg>
+            </a>
+          </li>
+        `)
+        $('#lastestMusic').append($li);
+      }
+      $('.loading').remove()     //去除loading动画
+    }) 
 
 
-/*    //tab
-	$('.siteNav').on('click', 'ol.tabItems>li',function(e){
-		let $li = $(e.currentTarget).addClass('active')
-		$li.siblings().removeClass('active')
-		let index = $li.index()
-		$li.trigger('tabChange',index)
-		$('.tabContent > li').eq(index).addClass('active')
-		.siblings().removeClass('active')
-	})
+	//tab
+    $('.siteNav').on('click','ol.tab-items>li',function(e){
+      let $li = $(e.currentTarget)    //点击的dom
+      let index = $li.index()
+      $li.trigger('tabChang',index) //自定义事件
+      $li.addClass('active').siblings().removeClass('active')  //自身加上css 兄弟去除css
+      $('.tab-content > li').eq(index).addClass('active')      //控制tab下的页面显示隐藏
+                                      .siblings().removeClass('active')
+    })
+    $('.siteNav').on('tabChang',function(e,index){ //监听自定义事件
+      let $li = $('.tab-content > li').eq(index)
+      if($li.attr('data-downloaded') === 'yes'){return} //页面已经加载过了 不要重复请求加载
 
-     $('.siteNav').on('tabChange',function(e, index){
-     	let $li = $('.tabContent > li').eq(index)
-     	if($li.attr('data-downloaded') ==='yes'){
-     		return
-     		}
-        if(index === 1){
-     		$.get('./page2.json').then((response) => {
-     			$li.text(response.content)
-     			$li.attr('data-downloaded','yes')
+      if(index === 1){
+        // $.get('/songs.json').then((response)=>{
+       var lastestMusic = new AV.Query('Song');
+          lastestMusic.find().then(function(results){
+          $li.attr('data-downloaded','yes')  //自定义属性加上yes
+          createHtml(results) //拼接html函数
+        })
+        // }) 
+
+      }else if(index === 2){
+        $.get('/songs.json').then((response)=>{
+          $li.attr('data-downloaded','yes')
+        })
+      }
+    })
+
+    function pad(index){  //小于10的前面+0
+      return index >= 10 ? index : '0' + index
+    }
 
 
-     		})
-     	}else if(index === 2){
-     		return
-     		$.get('./page3.json').then((response) => {
-     			$li.text(response.content)
-     			$li.attr('data-downloaded','yes')
+})
 
-     		})
 
-     	}
-     })  */
+
+
+
+
+
+
+
+
+
 
 
 let timer = undefined
@@ -106,4 +154,4 @@ function search(keyword){
 	
 	})
 }
-})
+ 

@@ -177,7 +177,7 @@ section>h2:first-child{
     display: flex;
     align-items: center;
 }
-.lastestMusic > ol > li svg.play{
+.lastestMusic > ol > li .play-circled>svg{
 	width: 5.9vw;
 	height: 5.9vw;
 	position: absolute;

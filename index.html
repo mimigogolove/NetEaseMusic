@@ -5,6 +5,7 @@
   <title>网易云音乐</title>
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <link rel="stylesheet" href="./index.css">
+  
 
 </head>
 <body>
@@ -38,34 +39,44 @@
 		        <h2>推荐歌单</h2>
 		        <ul>
 			        <li>
+			          
 				        <img src="http://p29vmquu8.bkt.clouddn.com/1.jpg" alt="">
 				        <p>华语速爆新歌</p>
+				    
 			        </li>
 			        <li>
+			        	
 				        <img src="http://p1.music.126.net/rTy3aA4WI5Rohmjz-Y8MUg==/18915998044731165.webp?imageView&thumbnail=246x0&quality=75&tostatic=0&type=webp"  alt="">
 				        <p>我还是很喜欢你，像风走了八千里，不问归期</p>
+				    
 			        </li>
 			        <li>
+			        	
 				        <img src="http://p1.music.126.net/WqwmRZhz6lzi4BkxwLaDhQ==/109951163097401251.webp?imageView&thumbnail=246x0&quality=75&tostatic=0&type=webp" alt="">
 				        <p>【节奏控】好听又带感的英文歌(2017总结篇)</p>
+			          
 			        </li>
 			        <li>
+			        	
 				        <img src="http://p1.music.126.net/AZEa0RlZxNkxWAi0wpDI4w==/109951163097632993.webp?imageView&thumbnail=246x0&quality=75&tostatic=0&type=webp" alt="">
 				        <p>2017年度最热新歌TOP100</p>
+				    
 			        </li>
 			        <li>
+			        	
 				        <img src="http://p1.music.126.net/WqwmRZhz6lzi4BkxwLaDhQ==/109951163097401251.webp?imageView&thumbnail=246x0&quality=75&tostatic=0&type=webp" alt="">
 				        <p>【节奏控】好听又带感的英文歌(2017总结篇)</p>
+				    
 			        </li>
 			        <li>
+			        	
 				        <img src="http://p1.music.126.net/zsRaHUdZO7LQ0hTX5ptqGg==/109951163102064502.webp?imageView&thumbnail=246x0&quality=75&tostatic=0&type=webp" alt="">
 				        <p>分手后再次与前任相见你会怎么办？</p>
+				    
 			        </li>
 		        </ul>
 		  
 	        </section>
-
-
 
 	        <section class="lastestMusic">
 		        <h2>最新音乐</h2>
@@ -109,40 +120,9 @@
 	<script src="http://at.alicdn.com/t/font_534049_kegkj9btk2ulerk9.js"></script>
 	<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 	<script src="index.js"></script>
-    <script>
-    	//tab
-    $('.siteNav').on('click','ol.tab-items>li',function(e){
-      let $li = $(e.currentTarget)    //点击的dom
-      let index = $li.index()
-      $li.trigger('tabChang',index) //自定义事件
-      $li.addClass('active').siblings().removeClass('active')  //自身加上css 兄弟去除css
-      $('.tab-content > li').eq(index).addClass('active')      //控制tab下的页面显示隐藏
-                                      .siblings().removeClass('active')
-    })
-    $('.siteNav').on('tabChang',function(e,index){ //监听自定义事件
-      let $li = $('.tab-content > li').eq(index)
-      if($li.attr('data-downloaded') === 'yes'){return} //页面已经加载过了 不要重复请求加载
-
-      if(index === 1){
-        // $.get('/songs.json').then((response)=>{
-    /*    var lastestMusic = new AV.Query('song');
-          lastestMusic.find().then(function(results){
-          $li.attr('data-downloaded','yes')  //自定义属性加上yes
-          createHtml(results) //拼接html函数
-        })
-        // }) */
-
-      }else if(index === 2){
-        $.get('/songs.json').then((response)=>{
-          $li.attr('data-downloaded','yes')
-        })
-      }
-    })
-
-    function pad(index){  //小于10的前面+0
-      return index >= 10 ? index : '0' + index
-    }
-    </script>
+	<script src="./vendors/av-min.js"></script>
+	
+ 
 
 </body>
 </html>
