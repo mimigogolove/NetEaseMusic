@@ -1,11 +1,16 @@
 {
-  "name": "neteasemusic",
+  "name": "music-demo",
   "version": "1.0.0",
   "description": "",
-  "main": "song.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "leancloud-storage": "^3.4.1",
+    "loaders.css": "^0.1.2"
+  }
 }

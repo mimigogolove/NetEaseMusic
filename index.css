@@ -43,28 +43,30 @@ section>h2:first-child{
 
 .topbar .downloadApp{
 	line-height: 7.5vw;
-	border: 1px solid white;
+	//border: 1px solid white;
 	border-radius: 4.25vw;
 	//display: block; /* */
 	color: white;
 	text-decoration: none;
 	padding: 0 0.5em;
+	position: relative;
 }
-.tab-content{ 
-  padding-top: 31.5vw;  
-}
-/*.topbar .downloadApp::after{
+.topbar .downloadApp::after{
 	content: '';
 	position: absolute;
 	top: 0;
 	left: 0;
-	width: 100%;
-	height: 100%;
+	width: 200%;
+	height: 200%;
 	border: 1px solid white;
 	border-radius: 13.3vw;
 	transform: scale(0.5);
 	transform-origin: 0 0;
-}*/
+}
+.tab-content{ 
+  padding-top: 31.5vw;  
+}
+
 
 .siteNav{}
 
