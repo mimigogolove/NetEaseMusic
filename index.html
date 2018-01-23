@@ -78,14 +78,30 @@
 		  
 	        </section>
 
-	        <section class="lastestMusic">
-		        <h2>最新音乐</h2>
-		        <div class="loading">
-		        	<img src="./loading.gif" alt="">
-		        </div>
-		        <ol id="lastestMusic"></ol>
-		
-	        </section>
+<section class="lastestMusic">
+    <h2>最新音乐</h2>
+	    <div class="loading">
+		    <img src="./loading.gif" alt="">
+		</div>
+    <ol id="lastestMusic"></ol> 
+	
+<!--最新音乐列表    
+ <li>
+     <a class="play-circled" href="./song.html">
+        <h3>告白气球</h3>
+        <p>
+           <svg class="sq">
+                <use xlink:href="#icon-sq"></use>
+           </svg>
+           周杰伦
+        </p>
+           <svg>
+               <use xlink:href="#icon-play-circled"></use>
+           </svg>
+     </a>
+</li>
+    -->
+</section>
 
 
 	        <section class="art">
@@ -107,20 +123,22 @@
 			
 		</li>
 <!--page3-->
-		<li >
+<li class="page-3">
 
-			<input id="searchSong" type="text" sytle="border: 1px solid red;">page3
-			<div id="output"></div>
-		</li>
+	<input id="search" type="text" style="background: #EBECEC;">
+	<ol id="searchResult"></ol>
+</li>
 
 
 		
-	</ol>
+</ol>
 	
 	<script src="http://at.alicdn.com/t/font_534049_kegkj9btk2ulerk9.js"></script>
 	<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 	<script src="index.js"></script>
 	<script src="./vendors/av-min.js"></script>
+	<script src="./scripts/av.js"></script>
+
 	
  
 

@@ -1,0 +1,181 @@
+$(function(){
+
+ //如何获取id
+function getParameterByName(name,url) {
+    if(!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g,"\\$&"),
+      regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if(!results) return null;
+    if(!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+
+/*//leancloud数据初始化
+var APP_ID = 'CApR3Yej9PHsOicPI3vhH7Fc-gzGzoHsz';
+var APP_KEY = 'ToqKlYglDwoTtrvEmGDRzkqz';
+
+AV.init({
+  appId: APP_ID,
+  appKey: APP_KEY
+});  */
+
+
+ let id = getParameterByName('id');
+  //console.log(id)
+ var query = new AV.Query('Song');
+ query.get(id).then(function(song){
+  //console.log(song)
+  let {url,name,singer,lyric} = song.attributes
+  $('.song-description > h1').text(name)   //歌名引入到<h1>标签   ////
+  //$('.song-description > p').text(lyric)   //歌词引入到<p>标签
+  let video = document.createElement('video')
+  video.src = url
+  //video.play() 
+  //console.log(lyric)
+  })
+/*function cover(coverUrl){
+    $('.disc .cover').attr('src',coverUrl)
+  }*/
+
+
+ video.oncanplay=function(){
+    video.play()
+    //console.log(lyric)
+   //$('.circle .playing').addClass('playing')    //播放暂停按钮制作
+  
+  $('.icon-pause').on('touchstart',function(){    //当暂停时音乐停止
+    video.pause()
+    $('.circle .playing').addClass('pause')
+  })
+  $('.icon-play').on('touchstart',function(){    //点击播放从新播放
+    video.play()
+    $('.circle .playing').removeClass('pause')
+  }) 
+  }     
+
+
+
+
+
+
+  let array = []  //分析歌词，获取
+  let parts = lyric.split('\n')
+  parts.forEach(function(string,index){
+    let xxx = string.split(']')
+    xxx[0] = xxx[0].substring(1)
+    //console.log(xxx)
+    let regex = /(\d+):([\d.]+)/  //用正则把时间转换为秒
+    let matches = xxx[0].match(regex)
+    let minute = +matches[1]
+    let seconds = +matches[2]
+
+    array.push({
+       time: minute*60+seconds,
+       lyric: xxx[1]
+    })
+  })
+  //console.log(parts)
+  //console.log(array)
+
+//从leancloud 获取当前页面歌曲数据
+let id = getParameterByName('id');/**/
+
+var $deSname = $("#des-name");
+var $playCover = $("#playCover");
+var $pagebg = $("#pagebg");
+var querysong = new AV.Query("Song");
+query.get(id).then(
+  function(song) {
+    let { name, singer, cover } = song.attributes;
+    let h2 = `
+        <span>${name}</span>
+        <span>-</span>
+        <small>${singer}</small>
+              `
+    let img = `
+        <img src="${cover}" alt="封面">
+              `
+    let bg = `
+        <div class="pagebg" style="background: transparent url(${cover}) no-repeat center;"></div> 
+              `
+
+    $deSname.append(h2);
+    $playCover.append(img);
+    $pagebg.append(bg);
+  },
+  function(error) {
+    alert("获取歌曲失败");
+  }
+);
+
+
+//把歌词添加到页面上
+   let $lyric = $('.lyric')     //歌词引入到<p>标签
+    array.map(function(object){
+      if(!object){return} 
+      let $scroll = $(".scroll");   //
+      let $p = $('<p/>')     
+      $p.attr('data-time', object.time).text(object.lyric)
+      /*//$p.appendTo($lyric.children('.lines'))*/
+      $p.appendTo($scroll)
+    })
+
+
+
+setInterval(function(){   //匹配时间
+  //console.log(video.currentTime)
+   let current = video.currentTime
+   for(var i=0;i<array.length;i++){
+      if(i === array.length - 1){
+         //console.log(array[i].lyric)
+      }else if(array[i].time <= current && array[i+1].time > current){
+         console.log(array[i].lyric)
+         break;
+    }
+   }
+
+     
+ },500)
+
+
+
+/*//暂停&播放
+function initPlayer(url){
+  let audio = document.createElement('audio')
+    audio.src = url  //url有疑问
+    audio.oncanplay = function(){
+        audio.play()
+        $('.disc-container').addClass('playing')
+    }
+    $('.icon-pause').on('click', function(){
+        audio.pause()
+        $('.disc-container').removeClass('playing')
+    })
+    $('.icon-play').on('click',function(){
+        audio.play()
+        $('.disc-container').addClass('playing')
+    })
+
+
+    
+  }//1.21  21:32found unexpected token*/
+   
+
+
+
+
+
+ })  
+
+
+ 
+
+
+
+
+
+ 
+
+
+
