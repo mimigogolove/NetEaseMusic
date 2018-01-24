@@ -13,6 +13,33 @@ AV.init({
   appKey: APP_KEY
 }); */
 
+
+
+/* //上传歌曲
+var SongObject = AV.Object.extend('Song');  //选择表名
+var songObject = new SongObject();   //生成一条数据
+songObject.save({
+  name: '80000' ,  //数据里面的内容
+  singer: 'PRC巴音汗',
+  url:'http://oz3p5w9wm.bkt.clouddn.com/80000.mp3'
+}).then(function(object) {
+  alert('保存成功!');
+}) */
+
+
+ /*//上传歌单
+var PlaylistObject = AV.Object.extend('Playlist');  //选择表名
+var playlistObject = new PlaylistObject();   //生成一条数据
+playlistObject.save({
+  musicListName: '「华语」哭泣使人乞讨，思念使人奔跑' ,  //数据里面的内容
+  volume: '48.3万',
+  url:'http://p1.music.126.net/3LbMYwTiQD5U3MCSgDPgdA==/109951163035317628.webp?imageView&thumbnail=246x0&quality=75&tostatic=0&type=webp'
+}).then(function(object) {
+  alert('保存成功!');
+}) */
+
+
+
 // 最新音乐 无序列表
 var lastestMusic = new AV.Query('Song');//数据库
   lastestMusic.find().then(function(results){//获取所有数据 数据库api

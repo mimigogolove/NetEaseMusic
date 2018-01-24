@@ -105,12 +105,40 @@ section.actions{
 	height: 100vh;
     display:flex;
     flex-direction:column;
-    background:transparent url(http://p3.music.126.net/2afLmJfXcnDOTagFky6QIQ==/109951163082695790.jpg) no-repeat center;
-    background-size: cover;
-    filter:;
-    z-index:;
-   /*filter: blur(100px) brightness(0.2);*/
+   // background:transparent url(http://p3.music.126.net/2afLmJfXcnDOTagFky6QIQ==/109951163082695790.jpg) no-repeat center;
+   // background-size: cover;
+   //filter: blur(100px) brightness(0.2);
+    position: relative;
+    overflow: hidden;
 }
+
+
+.song-background{
+  background-repeat: no-repeat;
+  background-size: auto 100%;
+  background-position: 50%;
+  position: absolute;
+  top: 0; right: 0; left: 0; bottom: 0;
+ //transform: scale(1.5);    /*缩放*/
+  transform-origin: center top;
+  transition: opacity .3s linear;
+  z-index: -1;
+  //filter: blur(100px) brightness(0.2);
+  background-size: cover;
+  background-position:center;
+
+}
+.song-background::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background: rgba(0,0,0, .5);
+}
+
+
 .disc-container{
 	position: relative; 
 }
@@ -180,14 +208,15 @@ section.actions{
     width:47vw;
     position:absolute;
     border-radius:50%;
-/* animation: circle 20s infinite linear;  
-animation-play-state: paused;  */
+    animation: circle 20s infinite linear;   /* 封面暂停位置*/
+    animation-play-state: paused;  
 }
+
 .disc-container .playing .halo,
 .disc-container .playing .cover{
 	animation: circle 20s infinite linear;  
 	animation-play-state: running;
-}
+} 
 
 .animate {
   animation: round 10s linear infinite;

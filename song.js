@@ -52,11 +52,12 @@ AV.init({
 
 $('.song-description > h1').text(name)   //歌名引入到<h1>标签
 $('.disc .cover').attr('src',coverUrl)    //歌曲封面切换
-$('.page').css({
-      background: ' url(' + coverUrl + ') no-repeat center',
-     //filter: 'blur(100px) brightness(0.2)',
+$('.song-background').css({
+      backgroundImage: ' url(' + coverUrl + ')  ',
+     //filter: 'blur(50px) brightness(0.2)'
      // opacity: '1'
-    })
+      filter: 'blur(40px)'
+  })
  
 
 

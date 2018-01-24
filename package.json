@@ -9,8 +9,17 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "jquery": "^3.2.1",
+    "jquery": "^3.3.1",
     "leancloud-storage": "^3.5.0",
     "loaders.css": "^0.1.2"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mimigogolove/NetEaseMusic.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mimigogolove/NetEaseMusic/issues"
+  },
+  "homepage": "https://github.com/mimigogolove/NetEaseMusic#readme"
 }
