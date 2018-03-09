@@ -15,13 +15,13 @@ AV.init({
 
 
 
-/* //上传歌曲
+/*//上传歌曲
 var SongObject = AV.Object.extend('Song');  //选择表名
 var songObject = new SongObject();   //生成一条数据
 songObject.save({
-  name: '80000' ,  //数据里面的内容
-  singer: 'PRC巴音汗',
-  url:'http://oz3p5w9wm.bkt.clouddn.com/80000.mp3'
+  name: '空空如也' ,  //数据里面的内容
+  singer: '任然',
+  url:'http://p29vmquu8.bkt.clouddn.com/%E7%A9%BA%E7%A9%BA%E5%A6%82%E4%B9%9F.m4a'
 }).then(function(object) {
   alert('保存成功!');
 }) */
@@ -103,8 +103,39 @@ var lastestMusic = new AV.Query('Song');//数据库
     }
 
 //最热音乐 有序列表
-
-
+function createHtml(results){
+      let index = 1    //歌曲前面的序号
+      // items.forEach((i)=>{
+      for(var i=0;i<results.length;i++){
+        let items = results[i].attributes
+        if(i <= 3){  //序号前三变红色
+          $('.listNumber').addClass('hot-three')
+        }
+        let $li = $(`
+          <li>
+            <a class="play-circled" href="/song.html?id=${results[i].id}">
+              <div class="listNumber">${pad(index)}</div>
+              <div class="list-wrap">
+                <h3>${items.name}</h3>
+                <p>
+                  <svg class="sq">
+                    <use xlink:href="#icon-sq"></use>
+                  </svg>
+                  ${items.singer}
+                </p>
+                <svg class="play">
+                  <use xlink:href="#icon-play-circled"></use>
+                </svg>
+              </div>
+            </a>
+          </li>
+          `)
+      $('.tab-music2 ol#music-hot').append($li)
+      index++
+      }
+      // })
+      $('.tab2-loading').remove()
+    }
 
 
 

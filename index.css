@@ -132,7 +132,46 @@ section>h2:first-child{
 }
 
 /*tab2-热歌*/
-.hot-img{}
+.hot-img{
+  background: url(http://s3.music.126.net/m/s/img/hot_music_bg_2x.jpg?f01a252389c26bcf016816242eaa6aee);
+  background-size: cover;
+  padding-top: 38.9vw;
+  position: relative;
+}
+.hot-img::after{
+  content: '';
+  position: absolute;
+  top: 0;
+  left:0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,.2)
+}
+.icon-window{
+  position: absolute;
+  top:0;
+  left: 0;
+  right:0;
+  bottom:0;
+  padding-left: 20px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column; /*垂直*/
+  /*z-index: 2;*/
+}
+.icon-window p{
+  color:hsla(0,0%,100%,.8);
+  margin-top: 10px;
+  font-size: 3.2vw;
+}
+.hot-icon{
+  background: url(http://s3.music.126.net/m/s/img/index_icon_2x.png?5207a28c3767992ca4bb6d4887c74880) no-repeat;
+  background-size: 166px 97px;
+  background-position: -24px -30px;
+  height: 67px;
+  width: 142px;
+}
+
 
 
 
@@ -148,7 +187,7 @@ section>h2:first-child{
   padding-left: calc(2.6vw + 2px);
 }
 .tab-music2 ol#music-hot>li{
-  padding:1vw 0;
+  padding: 1vw 0;
   position: relative;
 }
 
@@ -168,15 +207,36 @@ section>h2:first-child{
 	text-decoration: none;
 	color: inherit;
 }
+ol#music-hot>li>a .listNumber{
+  font-size: 4.53vw;
+  position: absolute;
+  top:50%;
+  transform: translateY(-50%);
+}
+ol#music-hot>li>a .listNumber.hot-three{
+  color:#d43c33;
+}
+ol#music-hot>li>a .listNumber{
+  color: #888;
+}
+ol#music-hot>li>a .list-wrap{
+  margin-left: 30px;
+  border-bottom: 1px solid #e2e2e2;
+}
+.tab-music2 ol#music-hot>li h3,
 .lastestMusic > ol > li h3{
 	font-size: 4.53vw;
+	font-weight: normal;
 }
+.tab-music2 ol#music-hot>li p,
 .lastestMusic > ol > li p{
 	font-size: 3.2vw;
 	color: #888;
     display: flex;
+    line-height: 2;
     align-items: center;
 }
+.tab-music2 ol#music-hot>li .play-circled svg.play,
 .lastestMusic > ol > li .play-circled>svg{
 	width: 5.9vw;
 	height: 5.9vw;
@@ -184,14 +244,21 @@ section>h2:first-child{
 	right: 4vw;
 	top: 50%;
 	transform: translateY( -50%);
-	fill: #AAAAAA;
+	fill: #b7b6b6;
 }
+.tab-music2 ol#music-hot>li svg.sq,
 .lastestMusic > ol > li svg.sq{
 	width: 4.2vw;
 	height: 4.2vw;
 	margin-right: 0.5em;
 	fill: #FE672E;
 
+}
+section.hot-view{
+  text-align: center;
+  color: #999;
+  padding:5vw 0;
+  font-size: 3.8vw;
 }
 
 
@@ -236,8 +303,5 @@ section.art .copyright{
 }
 
 /*搜索*/
-input{}
-
-
 
 
